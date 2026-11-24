@@ -121,7 +121,7 @@
     var d = '<section id="pt-dash"><div class="wrap"><div class="dash-head"><div><div class="eyebrow red">Dashboard</div><h2>Dashboard PATUH 4.0</h2></div>' +
       (k.dashboard ? '<a class="btn line"' + ext(k.dashboard) + ">Buka di tab baru</a>" : "") + '</div><div class="dash">' +
       (k.embed ? '<iframe src="' + esc(k.embed) + '" loading="lazy" allowfullscreen title="Dashboard PATUH 4.0"></iframe>' : '<div class="empty"><div><strong>Dashboard Looker Studio</strong><br>Link dashboard menyusul.</div></div>') + "</div></div></section>";
-    return head(p).replace('<div class="page-head">', '<div class="page-head has-art">').replace(/<\/p><\/div><\/div>$/, "</p>" + jump + '</div><img class="head-art" src="img/header/patuh.webp" alt="" aria-hidden="true"></div>') + panduan + input + d;
+    return head(p).replace(/<\/p><\/div><\/div>$/, "</p>" + jump + "</div></div>") + panduan + input + d;
   };
   R.phorse = function (p) {
     var k = C.phorse || {};
