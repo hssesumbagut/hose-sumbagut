@@ -66,6 +66,14 @@ section + section{padding-top:0}
 .page-head{background:var(--navy);color:var(--on-dark);padding-block:38px 32px}
 .page-head h1{font-family:var(--display);font-weight:800;font-size:clamp(38px,6vw,60px);margin:0;line-height:1;text-transform:uppercase}
 .page-head p{opacity:.85;max-width:65ch;margin:10px 0 0}
+.page-head.has-art{overflow:hidden}
+.page-head.has-art .wrap{position:relative}
+.page-head.has-art .wrap>*:not(.head-art){position:relative;z-index:1}
+.head-art{position:absolute;right:0;bottom:-32px;height:calc(100% + 72px);width:auto;max-width:none;pointer-events:none;
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 22%,#000 82%,transparent 100%),linear-gradient(to top,transparent 0,#000 30%);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to right,transparent 0,#000 22%,#000 82%,transparent 100%),linear-gradient(to top,transparent 0,#000 30%);mask-composite:intersect}
+@media (max-width:860px){.head-art{opacity:.25;right:-80px}}
+@media (max-width:560px){.head-art{display:none}}
 
 /* about */
 .about{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
