@@ -39,7 +39,7 @@ window.HOSE = {
 
   clsr: {
     video: "https://drive.google.com/file/d/1zpk-tvyN2BBKCPmLgO_6Mc8zOO3pLgWf/preview",
-    // poster: simpan file di folder img/clsr/ dengan nama 01.png s.d. 10.png
+    // poster: simpan file di folder img/clsr/ dengan nama 01.jpg s.d. 10.jpg (besar) dan 01-kecil.jpg s.d. 10-kecil.jpg (kecil)
     poster: [
       ["Tools & Equipment", "Alat & Peralatan", "#1f5fa8"],
       ["Line of Fire", "Berada di Posisi atau Kondisi Berbahaya", "#2a87c8"],

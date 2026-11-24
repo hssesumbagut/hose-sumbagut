@@ -7,7 +7,7 @@ Semua link (Google Form, Microsoft Forms, spreadsheet per lokasi, dashboard Look
 Isi `""` berarti tombol tampil sebagai "link menyusul".
 
 ## Poster 10 CLSR
-Simpan poster di `img/clsr/` dengan nama `01.png` sampai `10.png`. Kalau file belum ada, kotak warna tampil sebagai pengganti.
+Simpan poster di `img/clsr/` dengan nama `01.jpg` sampai `10.jpg` (ukuran penuh) dan `01-kecil.jpg` sampai `10-kecil.jpg` (thumbnail). Kalau file belum ada, kotak warna tampil sebagai pengganti.
 
 ## Struktur
 - index.html: kerangka halaman

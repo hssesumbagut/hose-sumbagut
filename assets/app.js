@@ -117,7 +117,7 @@
     var cards = P.map(function (r, i) {
       return '<button class="rule" style="--c:' + esc(r[2]) + '" data-i="' + i + '" aria-label="' + pad(i + 1) + " " + esc(r[0]) + '">' +
         '<div class="ph"></div><div class="num">' + pad(i + 1) + '</div><div class="txt"><b>' + esc(r[0]) + "</b><span>" + esc(r[1]) + "</span></div>" +
-        '<img src="img/clsr/' + pad(i + 1) + '.png" alt="Poster CLSR ' + pad(i + 1) + " " + esc(r[0]) + '" loading="lazy" onerror="this.remove()"></button>';
+        '<img src="img/clsr/' + pad(i + 1) + '-kecil.jpg" alt="Poster CLSR ' + pad(i + 1) + " " + esc(r[0]) + '" loading="lazy" onerror="this.remove()"></button>';
     }).join("");
     return head(p) + '<section><div class="wrap"><div class="rules" id="rules">' + cards + "</div></div></section>" +
       '<section><div class="wrap video"><div class="player">' + (k.video ? '<iframe src="' + esc(k.video) + '" allow="autoplay; fullscreen" allowfullscreen loading="lazy" title="Video Overview New CLSR"></iframe>' : "") +
@@ -182,7 +182,7 @@
     pv.innerHTML = '<div class="ph"><div><div style="font:800 64px var(--display)">' + pad(li + 1) + "</div><b>" + esc(r[0]) + '</b><div style="margin-top:6px;opacity:.9">' + esc(r[1]) + "</div></div></div>";
     var img = new Image(); img.alt = "Poster CLSR " + pad(li + 1) + " " + r[0];
     img.onload = function () { pv.innerHTML = ""; pv.appendChild(img); };
-    img.src = "img/clsr/" + pad(li + 1) + ".png";
+    img.src = "img/clsr/" + pad(li + 1) + ".jpg";
     document.getElementById("lbIdx").textContent = (li + 1) + " dari " + P.length;
     lb.hidden = false; document.getElementById("lbClose").focus();
   }
