@@ -108,8 +108,11 @@ a.tile:hover{border-color:var(--red)}
 .chips span{font-size:12px;border:1px solid var(--line);border-radius:20px;padding:3px 10px;background:var(--surface)}
 
 /* CLSR */
-.rules{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-.rule{position:relative;aspect-ratio:707/1000;border-radius:10px;overflow:hidden;border:0;padding:0;cursor:pointer;text-align:left;color:#fff;font-family:var(--body);background:var(--c);transition:transform .2s,box-shadow .2s}
+.rules{display:grid;grid-template-columns:repeat(5,1fr);gap:48px 16px}
+.rule-item{display:flex;flex-direction:column;gap:10px;min-width:0}
+.rule-title{margin:0;font-family:var(--display);font-weight:800;font-size:19px;line-height:1.1;text-transform:uppercase;letter-spacing:.02em;min-height:2.2em;display:flex;align-items:flex-end;text-wrap:balance}
+.rule-title b{color:var(--red)}
+.rule{position:relative;width:100%;aspect-ratio:707/1000;border-radius:10px;overflow:hidden;border:0;padding:0;cursor:pointer;text-align:left;color:#fff;font-family:var(--body);background:var(--c);transition:transform .2s,box-shadow .2s}
 .rule:hover{transform:translateY(-4px);box-shadow:0 14px 30px -12px rgba(0,0,0,.45)}
 .rule img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .rule .ph{position:absolute;inset:0;background:radial-gradient(circle at 75% 30%,rgba(255,255,255,.22),transparent 45%),linear-gradient(180deg,transparent 40%,rgba(0,0,0,.45))}
@@ -159,7 +162,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 }
 @media (max-width:900px){.rules{grid-template-columns:repeat(3,1fr)}.menu{grid-template-columns:1fr 1fr}.about,.video{grid-template-columns:1fr}}
 @media (max-width:600px){
-  .rules{grid-template-columns:1fr 1fr}.menu,.actions{grid-template-columns:1fr}
+  .rules{grid-template-columns:1fr 1fr;gap:32px 12px}.rule-title{font-size:16px}.menu,.actions{grid-template-columns:1fr}
   .slide{grid-template-columns:1fr}.badge-big{display:none}.logo small{display:none}
   .guide{grid-template-columns:1fr}.tiles{grid-template-columns:1fr 1fr}
 }

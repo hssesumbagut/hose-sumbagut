@@ -14,7 +14,7 @@
     { id: "patuh", nav: "PATUH.40", title: "PATUH.40", eyebrow: "Kepatuhan HSSE", desc: "Pilih salah satu dari 16 kriteria, isi Google Form yang terbuka, lalu lihat rekap kepatuhannya." },
     { id: "phorse", nav: "P-HORSE", title: "P-HORSE", eyebrow: "Pelaporan di web perusahaan", desc: "Pelaporan P-HORSE dilakukan di web perusahaan. Rekapnya ditampilkan di dashboard di bawah." },
     { id: "incident", nav: "Incident Alert", title: "Incident Alert", eyebrow: "Belajar dari kejadian", desc: "Ringkasan insiden yang sudah terjadi sebagai bahan pembelajaran. Buka PDF untuk membaca detailnya." },
-    { id: "clsr", nav: "10 CLSR", title: "10 CLSR", eyebrow: "Corporate Life Saving Rules", desc: "10 aturan keselamatan yang wajib dipatuhi setiap pekerja dan mitra kerja untuk mencegah kecelakaan fatal. Klik poster untuk melihat ukuran penuh, lalu tonton video pembelajarannya." },
+    { id: "clsr", nav: "10 CLSR", title: "10 CLSR", eyebrow: "Corporate Life Saving Rules", desc: "10 aturan keselamatan yang wajib dipatuhi setiap pekerja dan mitra kerja untuk mencegah kecelakaan fatal." },
     { id: "passport", nav: "Digital Passport", title: "Digital Passport", eyebrow: "HSSE Passport", desc: "Registrasi HSSE Passport dan Induction CLSR dilakukan di web perusahaan. Status tiap lokasi tampil di dashboard." }
   ];
   var MENU_DESC = {
@@ -115,13 +115,14 @@
   R.clsr = function (p) {
     var k = C.clsr || {}, P = k.poster || [];
     var cards = P.map(function (r, i) {
-      return '<button class="rule" style="--c:' + esc(r[2]) + '" data-i="' + i + '" aria-label="' + pad(i + 1) + " " + esc(r[0]) + '">' +
+      return '<div class="rule-item"><h3 class="rule-title"><span><b>' + pad(i + 1) + '</b> ' + esc(r[0]) + '</span></h3>' +
+        '<button class="rule" style="--c:' + esc(r[2]) + '" data-i="' + i + '" aria-label="' + pad(i + 1) + " " + esc(r[0]) + '">' +
         '<div class="ph"></div><div class="num">' + pad(i + 1) + '</div><div class="txt"><b>' + esc(r[0]) + "</b><span>" + esc(r[1]) + "</span></div>" +
-        '<img src="img/clsr/' + pad(i + 1) + '-kecil.jpg" alt="Poster CLSR ' + pad(i + 1) + " " + esc(r[0]) + '" loading="lazy" onerror="this.remove()"></button>';
+        '<img src="img/clsr/' + pad(i + 1) + '-kecil.jpg" alt="Poster CLSR ' + pad(i + 1) + " " + esc(r[0]) + '" loading="lazy" onerror="this.remove()"></button></div>';
     }).join("");
     return head(p) + '<section><div class="wrap"><div class="rules" id="rules">' + cards + "</div></div></section>" +
       '<section><div class="wrap video"><div class="player">' + (k.video ? '<iframe src="' + esc(k.video) + '" allow="autoplay; fullscreen" allowfullscreen loading="lazy" title="Video Overview New CLSR"></iframe>' : "") +
-      '</div><div><div class="eyebrow" style="color:var(--red)">Video pembelajaran</div><h2>Overview New CLSR</h2><p class="lead">Animasi 3D yang menjelaskan kesepuluh aturan. Putar langsung di sini, atau buka layar penuh.</p></div></div></section>';
+      '</div><div><div class="eyebrow" style="color:var(--red)">Video pembelajaran</div><h2>Overview New CLSR</h2></div></div></section>';
   };
   R.passport = function (p) {
     var k = C.passport || {};
