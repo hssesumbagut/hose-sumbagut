@@ -11,7 +11,7 @@
     { id: "kpi", nav: "KPI & HCL", title: "KPI & HCL", eyebrow: "HSSE Compliance League", desc: "Setiap lokasi kerja mengisi KPI dan HCL langsung di spreadsheet lokasinya, lalu melihat peringkat di dashboard." },
     { id: "lhc", nav: "LHC", title: "LHC", eyebrow: "Living HSSE Culture", desc: "Pilih kriteria pelaksanaan, isi formulir Microsoft Forms yang terbuka, lalu pantau rekapnya di dashboard." },
     { id: "jks", nav: "Jam Kerja Selamat", title: "Jam Kerja Selamat", eyebrow: "Safe Man Hours", desc: "Input jam kerja selamat setiap lokasi melalui satu formulir, dengan akumulasi per periode di dashboard." },
-    { id: "patuh", nav: "PATUH.40", title: "PATUH.40", eyebrow: "Kepatuhan HSSE", desc: "Pilih salah satu dari 16 kriteria, isi Google Form yang terbuka, lalu lihat rekap kepatuhannya." },
+    { id: "patuh", nav: "PATUH 4.0", title: "PATUH 4.0", eyebrow: "Observasi keselamatan kerja", desc: "Panduan observasi, input laporan untuk 16 kriteria pekerjaan, dan dashboard rekap PATUH 4.0 dalam satu halaman." },
     { id: "phorse", nav: "P-HORSE", title: "P-HORSE", eyebrow: "Pelaporan di web perusahaan", desc: "Pelaporan P-HORSE dilakukan di web perusahaan. Rekapnya ditampilkan di dashboard di bawah." },
     { id: "incident", nav: "Incident Alert", title: "Incident Alert", eyebrow: "Belajar dari kejadian", desc: "Ringkasan insiden yang sudah terjadi sebagai bahan pembelajaran. Buka PDF untuk membaca detailnya." },
     { id: "clsr", nav: "10 CLSR", title: "10 CLSR", eyebrow: "Corporate Life Saving Rules", desc: "10 aturan keselamatan yang wajib dipatuhi setiap pekerja dan mitra kerja untuk mencegah kecelakaan fatal." },
@@ -19,7 +19,7 @@
   ];
   var MENU_DESC = {
     kpi: "Isi spreadsheet per lokasi, lihat peringkat", lhc: "12 kriteria, Microsoft Forms", jks: "Input jam kerja dan akumulasinya",
-    patuh: "16 kriteria kepatuhan, Google Form", phorse: "Panduan, input, dan dashboard", incident: "Pembelajaran dari insiden",
+    patuh: "Observasi keselamatan, 16 kriteria", phorse: "Panduan, input, dan dashboard", incident: "Pembelajaran dari insiden",
     clsr: "Poster dan video Life Saving Rules", passport: "Registrasi passport dan induksi"
   };
 
@@ -59,7 +59,7 @@
       return '<a class="card" href="#' + p.id + '"><div class="n">' + pad(i + 1) + "</div><div><h3>" + esc(p.nav) + "</h3><p>" + esc(MENU_DESC[p.id]) + "</p></div></a>";
     }).join("");
     return '<div class="hero"><div class="wrap"><div class="slides" id="slides">' +
-      slide("HSSE Sumbagut", "Satu pintu untuk semua laporan HSSE", "Pekerja dari 25 lokasi kerja menginput laporan dan melihat rekapnya di satu tempat: KPI, LHC, Jam Kerja Selamat, PATUH.40, sampai Digital Passport.", '<a class="btn primary" href="#menu">Mulai lapor</a><a class="btn ghost" href="#juknis">Baca juknis</a>', "25", "Lokasi kerja") +
+      slide("HSSE Sumbagut", "Satu pintu untuk semua laporan HSSE", "Pekerja dari 25 lokasi kerja menginput laporan dan melihat rekapnya di satu tempat: KPI, LHC, Jam Kerja Selamat, PATUH 4.0, sampai Digital Passport.", '<a class="btn primary" href="#menu">Mulai lapor</a><a class="btn ghost" href="#juknis">Baca juknis</a>', "25", "Lokasi kerja") +
       slide("Corporate Life Saving Rules", "10 aturan yang menyelamatkan nyawa", "Pelajari poster dan video 10 CLSR sebelum memulai pekerjaan berisiko tinggi.", '<a class="btn primary" href="#clsr">Lihat 10 CLSR</a>', "10", "Life Saving Rules") +
       slide("Periode laporan", "Harian, mingguan, triwulan, tahunan", "Setiap dashboard menampilkan rekap sesuai periode, langsung dari Google Sheets dan Looker Studio.", '<a class="btn primary" href="#menu">Buka dashboard</a>', "4", "Periode rekap") +
       '</div><div class="dots" id="dots"></div></div></div>' +
@@ -91,10 +91,37 @@
       '<div id="jks-dash"></div>' + dash("Dashboard Jam Kerja Selamat", k.dashboard, "Akumulasi jam kerja selamat per lokasi dan periode akan tampil di sini.");
   };
   R.patuh = function (p) {
-    var k = C.patuh || {};
-    return head(p) + guide("Cara melaporkan 16 kriteria PATUH.40.", k.panduan) +
-      tiles("Input per kriteria", "Pilih kriteria. Tombol membuka Google Form.", k.kriteria || []) +
-      dash("Dashboard PATUH.40", k.dashboard, "Rekap kepatuhan per kriteria dan lokasi akan tampil di sini.");
+    var k = C.patuh || {}, g = k.panduan || {}, B = g.bagian || [];
+    var jump = '<div class="jumps">' +
+      '<button type="button" data-go="pt-panduan">Panduan</button><button type="button" data-go="pt-input">Input laporan</button><button type="button" data-go="pt-dash">Dashboard</button></div>';
+    var olStep = function (L) { return '<ol class="steps">' + L.map(function (x) { return "<li><strong>" + esc(x[0]) + "</strong> " + esc(x[1]) + "</li>"; }).join("") + "</ol>"; };
+    var olPlain = function (L) { return '<ol class="steps plain">' + L.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ol>"; };
+    var acc = B.map(function (b, i) {
+      var body = '<p class="acc-intro">' + esc(b.intro) + "</p>";
+      if (b.langkah) body += olStep(b.langkah);
+      if (b.poin) body += olPlain(b.poin);
+      if (b.tombolMatriks && k.matriks) body += '<a class="btn line"' + ext(k.matriks) + ">Buka Matrix Observer</a>";
+      if (b.larangan) body += '<div class="ban"><div class="ban-h">Jangan diisi di kolom CATATAN</div><div class="ban-list">' + b.larangan.map(function (w) { return "<span>" + esc(w) + "</span>"; }).join("") + "</div></div>" +
+        '<div class="note"><strong>Mengapa harus dikosongkan?</strong> ' + esc(b.alasan) + "</div>";
+      if (b.aturan) body += '<div class="rulegrid">' + b.aturan.map(function (a, j) { return '<div class="' + (j ? "ok" : "warn") + '"><b>' + esc(a[0]) + "</b><span>" + esc(a[1]) + "</span></div>"; }).join("") + "</div>";
+      if (b.peringatan) body += '<div class="alert"><strong>Peringatan</strong> ' + esc(b.peringatan) + "</div>";
+      if (b.penutup) body += '<p class="acc-end">' + esc(b.penutup) + "</p>";
+      return '<details class="acc" id="pt-' + (i + 1) + '"' + (i ? "" : " open") + '><summary><span class="acc-n">' + (i + 1) + '</span><span class="acc-t"><b>' + esc(b.judul) + "</b><small>" + esc(b.ringkas) + '</small></span><span class="acc-c" aria-hidden="true"></span></summary><div class="acc-b">' + body + "</div></details>";
+    }).join("");
+    var toc = '<div class="toc">' + B.map(function (b, i) { return '<button type="button" data-open="pt-' + (i + 1) + '"><span>' + (i + 1) + "</span>" + esc(b.judul) + "</button>"; }).join("") + "</div>";
+    var panduan = '<section id="pt-panduan"><div class="wrap"><div class="eyebrow red">Panduan</div><h2>' + esc(g.judul) + '</h2><p class="sub">' + esc(g.subjudul) + '</p><p class="lead">' + esc(g.pengantar) + "</p>" +
+      '<div class="guide-grid">' + toc + '<div class="accs">' + acc + "</div></div>" +
+      (g.komitmen ? '<div class="pledge"><div class="eyebrow">Komitmen bersama</div>' + g.komitmen.map(function (t) { return "<p>" + esc(t) + "</p>"; }).join("") + "</div>" : "") + "</div></section>";
+    var kr = (k.kriteria || []).map(function (it) {
+      return (it.url ? '<a class="crit"' + ext(it.url) + ">" : '<div class="crit off">') + '<span class="code">' + esc(it.kode) + '</span><span class="cn">' + esc(it.nama) + (it.url ? "" : "<small>link menyusul</small>") + '</span><span class="go" aria-hidden="true">↗</span>' + (it.url ? "</a>" : "</div>");
+    }).join("");
+    var input = '<section id="pt-input"><div class="wrap"><div class="eyebrow red">Input</div><h2>Input Laporan PATUH</h2><p class="lead">Pilih kriteria sesuai pekerjaan yang diobservasi. Setiap tombol membuka Google Form laporan.</p>' +
+      (k.matriks ? '<a class="matrix"' + ext(k.matriks) + '><span class="mx-i" aria-hidden="true"></span><span><b>Update Matriks Observer</b><small>Pastikan nama dan jabatan observer sudah terdaftar sebelum mengisi laporan.</small></span><span class="btn primary">Buka spreadsheet</span></a>' : "") +
+      '<div class="crits">' + kr + "</div></div></section>";
+    var d = '<section id="pt-dash"><div class="wrap"><div class="dash-head"><div><div class="eyebrow red">Dashboard</div><h2>Dashboard PATUH 4.0</h2></div>' +
+      (k.dashboard ? '<a class="btn line"' + ext(k.dashboard) + ">Buka di tab baru</a>" : "") + '</div><div class="dash">' +
+      (k.embed ? '<iframe src="' + esc(k.embed) + '" loading="lazy" allowfullscreen title="Dashboard PATUH 4.0"></iframe>' : '<div class="empty"><div><strong>Dashboard Looker Studio</strong><br>Link dashboard menyusul.</div></div>') + "</div></div></section>";
+    return head(p).replace(/<\/p><\/div><\/div>$/, "</p>" + jump + "</div></div>") + panduan + input + d;
   };
   R.phorse = function (p) {
     var k = C.phorse || {};
@@ -171,6 +198,8 @@
     }
     var s = document.getElementById("tileSearch");
     if (s) s.oninput = function () { var q = s.value.trim().toLowerCase(); [].forEach.call(document.querySelectorAll("#tiles .tile"), function (t) { t.hidden = q && t.dataset.name.indexOf(q) < 0; }); };
+    [].forEach.call(document.querySelectorAll("[data-go]"), function (b) { b.onclick = function () { var t = document.getElementById(b.dataset.go); if (t) t.scrollIntoView({ behavior: "smooth" }); }; });
+    [].forEach.call(document.querySelectorAll("[data-open]"), function (b) { b.onclick = function () { var t = document.getElementById(b.dataset.open); if (!t) return; [].forEach.call(document.querySelectorAll("details.acc"), function (d) { d.open = d === t; }); t.scrollIntoView({ behavior: "smooth", block: "start" }); }; });
     var rules = document.getElementById("rules");
     if (rules) rules.onclick = function (e) { var b = e.target.closest(".rule"); if (b) openLb(+b.dataset.i); };
   }
