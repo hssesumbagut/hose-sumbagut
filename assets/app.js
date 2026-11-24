@@ -115,7 +115,7 @@
     var kr = (k.kriteria || []).map(function (it) {
       return (it.url ? '<a class="crit"' + ext(it.url) + ">" : '<div class="crit off">') + '<span class="code">' + esc(it.kode) + '</span><span class="cn">' + esc(it.nama) + (it.url ? "" : "<small>link menyusul</small>") + '</span><span class="go" aria-hidden="true">↗</span>' + (it.url ? "</a>" : "</div>");
     }).join("");
-    var input = '<section id="pt-input"><div class="wrap"><div class="eyebrow red">Input</div><h2>Input Laporan PATUH</h2><p class="lead">Pilih kriteria sesuai pekerjaan yang diobservasi. Setiap tombol membuka Google Form laporan.</p>' +
+    var input = '<section id="pt-input"><div class="wrap"><div class="eyebrow red">Input</div><h2>Input Laporan PATUH</h2><p class="lead wide">Pilih kriteria sesuai pekerjaan yang diobservasi. Setiap tombol membuka Google Form laporan.</p>' +
       (k.matriks ? '<a class="matrix"' + ext(k.matriks) + '><span class="mx-i" aria-hidden="true"></span><span><b>Update Matriks Observer</b><small>Pastikan nama dan jabatan observer sudah terdaftar sebelum mengisi laporan.</small></span><span class="btn primary">Buka spreadsheet</span></a>' : "") +
       '<div class="crits">' + kr + "</div></div></section>";
     var d = '<section id="pt-dash"><div class="wrap"><div class="dash-head"><div><div class="eyebrow red">Dashboard</div><h2>Dashboard PATUH 4.0</h2></div>' +
