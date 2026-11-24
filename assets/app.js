@@ -108,7 +108,7 @@
       if (b.penutup) body += '<p class="acc-end">' + esc(b.penutup) + "</p>";
       return '<details class="acc" id="pt-' + (i + 1) + '"' + (i ? "" : " open") + '><summary><span class="acc-n">' + (i + 1) + '</span><span class="acc-t"><b>' + esc(b.judul) + "</b><small>" + esc(b.ringkas) + '</small></span><span class="acc-c" aria-hidden="true"></span></summary><div class="acc-b">' + body + "</div></details>";
     }).join("");
-    var toc = '<div class="toc">' + B.map(function (b, i) { return '<button type="button" data-open="pt-' + (i + 1) + '"><span>' + (i + 1) + "</span>" + esc(b.judul) + "</button>"; }).join("") + "</div>";
+    var toc = '<div class="side"><div class="toc">' + B.map(function (b, i) { return '<button type="button" data-open="pt-' + (i + 1) + '"><span>' + (i + 1) + "</span>" + esc(b.judul) + "</button>"; }).join("") + "</div>" + (k.formulir ? '<a class="toc-dl" href="' + esc(k.formulir) + '" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg><span>Download Excel Printable Formulir Pengamatan Proses Kritis PATUH 4.0</span></a>' : "") + "</div>";
     var panduan = '<section id="pt-panduan"><div class="wrap"><div class="eyebrow red">Panduan</div><h2>' + esc(g.judul) + '</h2><p class="sub">' + esc(g.subjudul) + '</p><p class="lead">' + esc(g.pengantar) + "</p>" +
       '<div class="guide-grid">' + toc + '<div class="accs">' + acc + "</div></div>" +
       (g.komitmen ? '<div class="pledge"><div class="eyebrow">Komitmen bersama</div>' + g.komitmen.map(function (t) { return "<p>" + esc(t) + "</p>"; }).join("") + "</div>" : "") + "</div></section>";

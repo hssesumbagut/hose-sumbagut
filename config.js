@@ -28,6 +28,7 @@ window.HOSE = {
   patuh: {
     // Link spreadsheet Matrix Observer (tombol "Update Matriks Observer")
     matriks: "https://docs.google.com/spreadsheets/d/18ERPsj0zfRC7KRyd5-RWFZjw6wvHIjaJKfD3QM5bwvk/edit?usp=sharing",
+    formulir: "https://drive.usercontent.google.com/download?id=1ao8QeUqR5CwVcqppHBRU8OwL-Fl26NWt&export=download&confirm=t",
     // Dashboard Looker Studio: "dashboard" = link biasa (tombol buka), "embed" = link sematan (tampil di halaman)
     dashboard: "https://datastudio.google.com/reporting/517fae39-e6b4-4de0-a07a-890128a610ea",
     embed: "https://lookerstudio.google.com/embed/reporting/517fae39-e6b4-4de0-a07a-890128a610ea",
