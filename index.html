@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>HOSE Sumbagut</title>
+<meta name="description" content="HSSE One Stop Experience: input laporan dan rekap HSSE untuk 25 lokasi kerja.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="#beranda"><i></i>HOSE <small>HSSE One Stop Experience</small></a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav"></nav>
+  </div>
+</header>
+<div class="stripe"></div>
+<main id="app"></main>
+<footer><div class="wrap"><span>HOSE · HSSE Sumbagut</span><span>Bekerja selamat, pulang selamat</span></div></footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Poster CLSR">
+  <div class="box">
+    <div class="pv" id="lbPv"></div>
+    <div class="meta"><span id="lbIdx"></span><div class="lbnav"><button id="lbPrev">Sebelumnya</button><button id="lbNext">Berikutnya</button><button id="lbClose">Tutup</button></div></div>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
