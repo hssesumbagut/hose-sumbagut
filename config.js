@@ -55,7 +55,7 @@ window.HOSE = {
     panduan: {
       judul: "Panduan Pelaporan PATUH 4.0",
       subjudul: "Pedoman Pelaksanaan Observasi dan Pengisian Pelaporan Online",
-      pengantar: "Panduan ini disusun sebagai acuan bagi seluruh observer dan PIC dalam melaksanakan observasi keselamatan kerja serta melakukan pengisian pelaporan PATUH 4.0 secara benar, konsisten, dan sesuai dengan ketentuan.",
+      pengantar: "",
       bagian: [
         { judul: "Panduan Pelaksanaan Observasi", ringkas: "9 langkah observer di lapangan",
           intro: "Dalam melaksanakan observasi keselamatan kerja, setiap observer wajib memperhatikan hal-hal berikut:",
@@ -100,7 +100,7 @@ window.HOSE = {
           peringatan: "Apabila ditemukan pelaporan ganda (double input), maka laporan tersebut akan dinyatakan TIDAK VALID (INVALID).",
           penutup: "Seluruh PIC dan observer diharapkan memastikan bahwa setiap laporan yang dikirimkan merupakan hasil observasi aktual, dilengkapi bukti yang sesuai, serta memenuhi ketentuan pelaporan PATUH 4.0." }
       ],
-      komitmen: ["Lakukan observasi dengan benar, laporkan temuan secara akurat, dan pastikan setiap data yang disampaikan dapat dipertanggungjawabkan.",
+      komitmen: ["Lakukan observasi dengan benar secara akurat, dan pastikan setiap data yang disampaikan dapat dipertanggungjawabkan.",
                  "Mari tingkatkan kepedulian dan budaya keselamatan kerja melalui pelaksanaan PATUH 4.0 secara konsisten dan berkelanjutan."]
     }
   },
